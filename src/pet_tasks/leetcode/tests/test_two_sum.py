@@ -1,6 +1,6 @@
 import pytest
 
-from pet_tasks.leetcode.target_sum_elements import target_two_sum
+from pet_tasks.leetcode.two_sum import two_sum
 
 
 @pytest.mark.parametrize(
@@ -12,9 +12,9 @@ from pet_tasks.leetcode.target_sum_elements import target_two_sum
         ([3, 3], 7, []),
     ],
 )
-def test_target_sum__success(nums: list[int], target: int, exp_res: list[int]) -> None:
+def test_two_sum__success(nums: list[int], target: int, exp_res: list[int]) -> None:
     # act
-    res = target_two_sum(nums=nums, target=target)
+    res = two_sum(nums=nums, target=target)
 
     # assert
     assert res == exp_res

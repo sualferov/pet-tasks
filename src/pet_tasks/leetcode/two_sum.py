@@ -1,4 +1,4 @@
-def target_two_sum(nums: list[int], target: int) -> list[int]:
+def two_sum(nums: list[int], target: int) -> list[int]:
     """Проверяет наличие заданной суммы соседних элементов."""
     terms: dict[int, int] = {}
 
