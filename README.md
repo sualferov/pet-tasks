@@ -15,12 +15,12 @@
 
 ### Структура проекта
 
-#### [LeetCode](src/pet_tasks/leetcode/REDME.md)
+#### [LeetCode](https://github.com/sualferov/pet-tasks/blob/main/src/pet_tasks/leetcode/README.md)
 <p>
 Задачи по программированию и алгоритмам. Заставляют шевелить мозг.
 </p>
 
-#### [LangGraph](src/pet_tasks/langgraph/REDME.md)
+#### [LangGraph](https://github.com/sualferov/pet-tasks/blob/main/src/pet_tasks/langgraph/README.md)
 <p>
 Пробую разобраться с LangGraph. Дополнительно использую: FastAPI, async
 </p>
