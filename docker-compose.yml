@@ -1,0 +1,51 @@
+x-app: &app_default
+    image: "pet-tasks:dev"
+    platform: linux/amd64
+    build: &app_build
+        context: .
+        dockerfile: contrib/docker/Dockerfile
+        target: dev-runtime
+        args:
+            PIP_VERSION: ${PIP_VERSION:-25.3}
+            CODE_VERSION: ${CODE_VERSION:-local}
+        cache_from:
+          - "pet-tasks:dev"
+    security_opt:
+        - seccomp:unconfined
+    hostname: pet-tasks
+    volumes: &app_volumes
+        - .:/data/app
+    environment: &app_envs
+        ENV_FILE: ${ENV_FILE:-contrib/.env.local}
+    stdin_open: true
+    tty: true
+
+services:
+    db:
+      image: postgres:18-alpine
+      ports:
+        - "30102:30302"
+      volumes:
+        - pgdata:/var/lib/postgresql
+        - ./contrib/postgresql/init.sql:/docker-entrypoint-initdb.d/init.sql # SQL script for initialization
+      environment:
+        POSTGRES_PASSWORD: pet-tasks
+        POSTGRES_DB: pet-tasks
+        POSTGRES_USER: pet_tasks_app
+        PGPORT: 30302
+      healthcheck:
+        test: [ "CMD-SHELL", "pg_isready -U pet-tasks" ]
+        interval: 5s
+        timeout: 5s
+        retries: 5
+
+    app:
+      <<: *app_default
+      depends_on:
+        db: { condition: service_healthy }
+      ports:
+        - "${APP_PORT:-8000}:${APP_PORT:-8000}"
+      command: ["uv", "run", "pet-tasks", "web-serve", "--host", "0.0.0.0"]
+
+volumes:
+  pgdata:
