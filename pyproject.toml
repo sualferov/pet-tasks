@@ -8,8 +8,12 @@ requires-python = ">=3.14"
 [dependency-groups]
 main-libs = [
     "aiohttp==3.13.1",
-    "fastapi[standard]==0.121.3",
+    "asyncpg==0.31.0",
     "click==8.3.0",
+    "fastapi[standard]==0.121.3",
+    "langgraph==1.0.4",
+    "pydantic==2.12.5",
+    "python-dotenv==1.2.1",
     "uvicorn[standard]==0.38.0"
 ]
 
@@ -83,6 +87,8 @@ ignore = [
     "D107",    # Missing docstring in `__init__`
     "D203",    # 1 blank line required before class docstring
     "D213",    # Multi-line docstring summary should start at the second line
+    "RUF002",  # Docstring ambiguous.
+    "RUF029",  # Function is declared `async`, but doesn't `await` or use `async` features.
 ]
 unfixable = [
     "B", # Avoid trying to fix flake8-bugbear violations.
@@ -145,7 +151,9 @@ warn_unreachable = true
 warn_unused_configs = true
 warn_unused_ignores = true
 
-plugins = []
+plugins = [
+    "pydantic.mypy"
+]
 
 exclude = [
     "tests/",
@@ -157,6 +165,10 @@ module = [
     "asyncpg.*",
 ]
 ignore_missing_imports = true
+
+[tool.pydantic-mypy]
+init_typed =true
+init_forbid_extra = true
 
 [build-system]
 requires = ["setuptools"]

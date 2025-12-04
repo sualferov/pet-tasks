@@ -17,6 +17,8 @@ BEGIN
         CONNECTION LIMIT -1;
       GRANT CREATE ON SCHEMA public TO pet_tasks_role;
       GRANT USAGE ON SCHEMA public TO pet_tasks_role;
+
+      RAISE NOTICE 'Role "pet_tasks_role" created.';
    END IF;
 END $$;
 
@@ -42,8 +44,6 @@ create table users(
     id BIGSERIAL PRIMARY KEY,
     name VARCHAR,
     email VARCHAR,
-    pw_hash VARCHAR,
-    pw_salt VARCHAR,
     created_at TIMESTAMPTZ default current_timestamp not null,
     UNIQUE(email)
 );
