@@ -1,14 +1,13 @@
 import pytest
 
 from pet_tasks.leetcode.longest_prefix import longest_prefix
-from pet_tasks.leetcode.roman_to_int import roman_to_int
 
 
 @pytest.mark.parametrize(
     ('words', 'exp_res'),
     [
-        # (['flower', 'flow', 'flight'], 'fl'),
-        # (['dog', 'racecar', 'car'], ''),
+        (['flower', 'flow', 'flight'], 'fl'),
+        (['dog', 'racecar', 'car'], ''),
         (['a'], 'a'),
     ],
 )
