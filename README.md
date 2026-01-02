@@ -2,8 +2,6 @@
 
 > Я выполняю разные задачки, мини-проекты по разным технологиям и публикую это тут.
 
-## Меньше слов - больше дела
-
 ### Структура проекта
 
 #### [LeetCode](https://github.com/sualferov/pet-tasks/blob/main/src/pet_tasks/leetcode/README.md)
