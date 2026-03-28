@@ -71,4 +71,5 @@ class Postgres:
 
 
 config = dotenv_values(os.environ.get('ENV_FILE'))
+print(f'\n\n{config.get("PG_CONNECTION_DSN")}\n\n')
 postgres_db = Postgres(dsn=config.get('PG_CONNECTION_DSN'))

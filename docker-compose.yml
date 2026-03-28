@@ -38,14 +38,21 @@ services:
         interval: 5s
         timeout: 5s
         retries: 5
-
+    redis:
+      image: redis:8.6-alpine
+      ports:
+        - "6379:6379"
+      volumes:
+        - redis_data:/data
     app:
       <<: *app_default
       depends_on:
         db: { condition: service_healthy }
+        redis: { condition: service_healthy }
       ports:
         - "${APP_PORT:-8000}:${APP_PORT:-8000}"
       command: ["uv", "run", "pet-tasks", "web-serve", "--host", "0.0.0.0"]
 
 volumes:
   pgdata:
+  redis_data:

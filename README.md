@@ -1,6 +1,6 @@
 # Практические задания по программированию
 
-> Я выполняю разные задачки, мини-проекты по разным технологиям и публикую это тут.
+> Я выполняю разные задачки, мини-проекты по разным технологиям.
 
 ### Структура проекта
 
@@ -11,6 +11,11 @@
 
 #### [LangGraph](https://github.com/sualferov/pet-tasks/blob/main/src/pet_tasks/langgraph/README.md)
 <p>
-Пробую разобраться с LangGraph. Дополнительно использую: FastAPI, async
+Пример использования LangGraph. Дополнительно использую: FastAPI, async
+</p>
+
+#### [FastAPI + SSE](https://github.com/sualferov/pet-tasks/blob/main/src/pet_tasks/langgraph/README.md)
+<p>
+Пример использования Serve-Side Events в связке с Redis Pub/Sub
 </p>
 

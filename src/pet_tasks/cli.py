@@ -1,16 +1,25 @@
 import click
 import uvicorn
 from fastapi import FastAPI, Request, Response, status
+from fastapi.datastructures import Default
 from fastapi.responses import JSONResponse
 from pydantic import ValidationError
 
 from pet_tasks.exceptions.server_error import ServerError
+from pet_tasks.fastapi_sse.urls import urls as sse_urls
 from pet_tasks.langgraph.urls import urls as lg_urls
 
 
 fast_api_app = FastAPI(title='Pet tasks web server')
-for url in lg_urls:
-    fast_api_app.add_api_route(path=url[0], endpoint=url[1], methods=url[2], name=url[3])
+urls = lg_urls + sse_urls
+for url in urls:
+    fast_api_app.add_api_route(
+        path=url.path,
+        endpoint=url.handler,
+        methods=url.methods,
+        name=url.name,
+        response_class=url.response_class or Default(JSONResponse),
+    )
 
 
 @fast_api_app.exception_handler(ValidationError)
