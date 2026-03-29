@@ -58,5 +58,5 @@ def run_web_server(*, host: str, port: int, debug: bool) -> None:
 @cli.command('cmd')
 def run_cmd_cli() -> None:
     """Запускает методы из пакета cmd."""
-    print(f'\n\n{"-"*10} Running cmd {"-"*10}\n')
+    print(f'\n\n{"-" * 10} Running cmd {"-" * 10}\n')
     run_cmd()
