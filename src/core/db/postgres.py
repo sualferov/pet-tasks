@@ -49,7 +49,7 @@ class Postgres:
         async with self._connection() as conn:
             return await conn.fetchrow(query, *args, timeout=timeout)
 
-    async def fetchval(  # type: ignore
+    async def fetchval(
         self,
         query: str,
         args: Iterable[object],

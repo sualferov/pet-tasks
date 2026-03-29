@@ -1,4 +1,4 @@
-from pet_tasks.langgraph.db.postgres import postgres_db
+from core.db.postgres import postgres_db
 
 
 class UsersRepo:
