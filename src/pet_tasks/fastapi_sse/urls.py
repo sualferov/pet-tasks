@@ -4,6 +4,7 @@ from core.entities.api_url import APIUrl
 from pet_tasks.fastapi_sse.handlers.stream import sse_stream_handler
 from pet_tasks.fastapi_sse.handlers.stream_publish import sse_stream_publish_handler
 
+
 urls = [
     APIUrl(
         path='/api/sse/stream/',

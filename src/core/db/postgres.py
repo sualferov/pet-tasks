@@ -49,7 +49,7 @@ class Postgres:
         async with self._connection() as conn:
             return await conn.fetchrow(query, *args, timeout=timeout)
 
-    async def fetchval(  # type: ignore
+    async def fetchval(
         self,
         query: str,
         args: Iterable[object],
@@ -71,5 +71,4 @@ class Postgres:
 
 
 config = dotenv_values(os.environ.get('ENV_FILE'))
-print(f'\n\n{config.get("PG_CONNECTION_DSN")}\n\n')
 postgres_db = Postgres(dsn=config.get('PG_CONNECTION_DSN'))

@@ -1,4 +1,4 @@
-from pet_tasks.fastapi_sse.handlers.entities.stream import StreamPublishResponse, StreamPublishRequest
+from pet_tasks.fastapi_sse.handlers.entities.stream import StreamPublishRequest, StreamPublishResponse
 from pet_tasks.fastapi_sse.services.stream import StreamService
 
 

@@ -4,7 +4,7 @@ from fastapi.sse import ServerSentEvent
 from pydantic import BaseModel
 
 from core.db.redis import redis_db
-from pet_tasks.fastapi_sse.handlers.entities.stream import StreamRequest, StreamPublishResponse, StreamPublishRequest
+from pet_tasks.fastapi_sse.handlers.entities.stream import StreamPublishRequest, StreamPublishResponse, StreamRequest
 
 
 class Item(BaseModel):
@@ -35,14 +35,14 @@ class StreamService:
             while True:
                 message = await pubsub.get_message(ignore_subscribe_messages=True)
                 if message:
-                    if message["data"].decode() == 'STOP':
+                    if message['data'].decode() == 'STOP':
                         break
                     yield ServerSentEvent(data=message, event='Item_update', id='1')
             await pubsub.unsubscribe('channel:1')
 
     @classmethod
     async def publish(cls, request: StreamPublishRequest) -> StreamPublishResponse:
-
+        """Публикует сообщение."""
         await redis_db.publish(channel=f'channel:{request.channel_id}', message=request.message)
 
         return StreamPublishResponse(status='ok')
