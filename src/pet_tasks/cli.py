@@ -5,6 +5,7 @@ from fastapi.datastructures import Default
 from fastapi.responses import JSONResponse
 from pydantic import ValidationError
 
+from pet_tasks.cmd.cmd_cli import run_cmd
 from pet_tasks.exceptions.server_error import ServerError
 from pet_tasks.fastapi_sse.urls import urls as sse_urls
 from pet_tasks.langgraph.urls import urls as lg_urls
@@ -52,3 +53,10 @@ def cli() -> None:
 def run_web_server(*, host: str, port: int, debug: bool) -> None:
     """Run Web-server."""
     uvicorn.run('pet_tasks.cli:fast_api_app', host=host, port=port, reload=debug)
+
+
+@cli.command('cmd')
+def run_cmd_cli() -> None:
+    """Запускает методы из пакета cmd."""
+    print(f'\n\n{"-"*10} Running cmd {"-"*10}\n')
+    run_cmd()
