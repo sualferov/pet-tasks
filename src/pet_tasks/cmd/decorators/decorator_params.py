@@ -1,9 +1,11 @@
 from collections.abc import Callable
 from functools import wraps
-from typing import ParamSpec, TypeVar, Concatenate
+from typing import ParamSpec, TypeVar
+
 
 TParam = ParamSpec('TParam')
 TReturn = TypeVar('TReturn')
+
 
 def multi_calls(count: int) -> Callable[[Callable[TParam, TReturn]], Callable[TParam, None]]:
     """Вызывает метод указанное кол-во раз."""
