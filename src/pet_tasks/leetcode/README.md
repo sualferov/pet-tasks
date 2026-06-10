@@ -10,6 +10,10 @@
 <img src="../../../static/img/prefix_sum.png" width="400px"/>
 <br/>
 <b>Когда использовать</b>: когда нужно выполнить несколько запросов сумм к подмассиву или вычислить совокупные суммы
+
+<b>Задачи</b>
+- [range_sum](./prefix_sum/range_sum.py) - рассчитывает сумму элементов массива в интервале [i, j] ([LeetCode: 303](https://leetcode.com/problems/range-sum-query-immutable/))
+
 <hr/>
 
 ### Два указателя (Two pointers)
@@ -18,6 +22,10 @@
 <img src="../../../static/img/two_pointers.png" width="400px"/>
 <br/>
 <b>Когда использовать</b>: при работе с отсортированными массивами или списками, где нужно найти пары, удовлетворяющие условию (например, сумма = target).
+
+<b>Задачи</b>
+- [two_sum](./two_pointers/two_sum.py) - возвращает индексы элементов массива, сумма элементов которых равна target ([LeetCode: 167](https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/description/))
+
 <hr/>
 
 ### Скользящее окно (Sliding window)
@@ -135,4 +143,4 @@
 4. [roman_to_int](./roman_to_int.py) - переводит римское число в int
 5. [longest prefix](./longest_prefix.py) - находит максимально общий префикс
 6. [valid parentheses](./valid_parentheses.py) - проверяет корректность открытых/закрытых скобок
-7. [range_sum](./prefix_sum/range_sum.py) - рассчитывает сумму элементов массива в интервале [i, j] ([LeetCode: 303](https://leetcode.com/problems/range-sum-query-immutable/))
+7. 
