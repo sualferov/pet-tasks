@@ -1,6 +1,6 @@
 import pytest
 
-from pet_tasks.leetcode.range_sum import RangeSum
+from pet_tasks.leetcode.prefix_sum.range_sum import RangeSum
 
 
 @pytest.mark.parametrize(
