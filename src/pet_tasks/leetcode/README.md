@@ -25,6 +25,7 @@
 
 <b>Задачи</b>
 - [two_sum](./two_pointers/two_sum.py) - возвращает индексы элементов массива, сумма элементов которых равна target ([LeetCode: 167](https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/description/))
+- [three_sum](./two_pointers/three_sum.py) - возвращает массивы из 3 элементов, сумма которых равна 0 ([LeetCode: 15](https://leetcode.com/problems/3sum/description/))
 
 <hr/>
 
