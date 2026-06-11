@@ -1,33 +1,39 @@
 def three_sum(numbers: list[int]) -> list[list[int]]:
     """Возвращает массивы из 3 элементов, сумма которых равна 0."""
     """https://leetcode.com/problems/3sum/description/"""
-    min_numbers_length = 3
-    if not numbers or len(numbers) < min_numbers_length:
-        return []
-
     numbers.sort()
-    idx_left, idx_middle, idx_right = 0, 1, len(numbers) - 1
+    result: list[list[int]] = []
+    length = len(numbers)
 
-    sum_elements: list[list[int]] = []
+    for i in range(length - 2):
+        # Пропускаем одинаковые элементы для первого числа, чтобы избежать дубликатов
+        if i > 0 and numbers[i] == numbers[i - 1]:
+            continue
 
-    while idx_left <= len(numbers) - 2:
-        num_left = numbers[idx_left]
+        # Оптимизация: если текущее число > 0, сумма трех чисел точно будет > 0
+        if numbers[i] > 0:
+            break
 
-        while idx_middle < idx_right:
-            num_middle, num_right = numbers[idx_middle], numbers[idx_right]
+        left, right = i + 1, length - 1
 
-            if (
-                num_middle + num_right + num_left == 0
-                and [num_left, num_middle, num_right] not in sum_elements
-            ):
-                sum_elements.append([num_left, num_middle, num_right])
-            if num_middle + num_right + num_left < 0:
-                idx_middle += 1
-                continue
-            idx_right -= 1
+        while left < right:
+            current_sum = numbers[i] + numbers[left] + numbers[right]
 
-        idx_left += 1
-        idx_middle = idx_left + 1
-        idx_right = len(numbers) - 1
+            if current_sum == 0:
+                result.append([numbers[i], numbers[left], numbers[right]])
+                left += 1
+                right -= 1
 
-    return sum_elements
+                # Пропускаем дубликаты для второго числа
+                while left < right and numbers[left] == numbers[left - 1]:
+                    left += 1
+                # Пропускаем дубликаты для третьего числа
+                while left < right and numbers[right] == numbers[right + 1]:
+                    right -= 1
+
+            elif current_sum < 0:
+                left += 1
+            else:
+                right -= 1
+
+    return result
